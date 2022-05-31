@@ -1,25 +1,12 @@
-require("dotenv").config();
-const debug = require("debug")("coffeeshops:server");
-const chalk = require("chalk");
 const express = require("express");
-const helmet = require("helmet");
+const cors = require("cors");
 const morgan = require("morgan");
+const helmet = require("helmet");
 const { notFoundError, generalError } = require("./middlewares/error");
 
 const app = express();
 
-const startServer = (port) =>
-  new Promise((resolve, reject) => {
-    const server = app.listen(port, () => {
-      debug(chalk.yellow(`Server listening on http://localhost:${port}`));
-      resolve();
-    });
-
-    server.on("error", (error) => {
-      reject(error);
-    });
-  });
-
+app.use(cors());
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(express.json());
@@ -27,4 +14,4 @@ app.use(express.json());
 app.use(notFoundError);
 app.use(generalError);
 
-module.exports = { startServer, app };
+module.exports = app;
