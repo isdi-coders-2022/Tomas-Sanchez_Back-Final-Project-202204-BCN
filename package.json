@@ -49,7 +49,7 @@
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/index.js",
-      "!src/server/initializeServer.js",
+      "!src/server/startServer.js",
       "!src/server/index.js",
       "!src/database/index.js",
       "!.eslintrc.js"
