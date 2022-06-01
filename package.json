@@ -42,5 +42,15 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.5",
     "morgan": "^1.10.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js",
+      "!src/server/initializeServer.js",
+      "!src/server/index.js",
+      "!src/database/index.js",
+      "!.eslintrc.js"
+    ]
   }
 }
