@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt");
-const { userRegister } = require("./userController");
 const User = require("../../database/models/UserSchema");
+const { userRegister } = require("./userController");
 
 const mockNewUser = {
   name: "Julia",

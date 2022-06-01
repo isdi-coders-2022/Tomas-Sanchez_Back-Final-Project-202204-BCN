@@ -35,4 +35,18 @@ describe("Given a generalError function", () => {
       expect(res.json).toHaveBeenCalledWith(expectedMessage);
     });
   });
+
+  describe("When its invoked with a request", () => {
+    test("Then it should call the response methot status with 400", () => {
+      const error = new Error();
+      error.code = 400;
+      error.message = "hola";
+
+      const expectedcode = 400;
+
+      generalError(error, null, res);
+
+      expect(res.status).toHaveBeenCalledWith(expectedcode);
+    });
+  });
 });

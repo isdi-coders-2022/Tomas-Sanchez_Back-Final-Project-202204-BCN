@@ -40,14 +40,16 @@
     "express": "^4.18.1",
     "helmet": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^8.6.0",
     "mongoose": "^6.3.5",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "supertest": "^6.2.3"
   },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/index.js",
-      "!src/server/initializeServer.js",
+      "!src/server/startServer.js",
       "!src/server/index.js",
       "!src/database/index.js",
       "!.eslintrc.js"
