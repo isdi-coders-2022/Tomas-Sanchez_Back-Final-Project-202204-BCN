@@ -9,6 +9,7 @@ const connectDataBase = (connectionMongoUrl) =>
         reject(error);
         return;
       }
+
       debug(chalk.bold.bgMagenta.greenBright(`Database connected`));
       resolve();
     });
