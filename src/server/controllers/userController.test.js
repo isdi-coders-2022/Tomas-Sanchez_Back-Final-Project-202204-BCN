@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const User = require("../../database/models/UserSchema");
-const { userRegister } = require("./userController");
+const { userRegister, userLogin } = require("./userController");
 
 const mockNewUser = {
   name: "Julia",
@@ -59,6 +60,60 @@ describe("Given a register user function", () => {
       expectedError.message = "This user already exists...";
 
       expect(mockNext).toHaveBeenCalledWith(expectedError);
+    });
+  });
+});
+
+describe("Given a loginUser function", () => {
+  const expectedToken = "jejeje";
+  const req = {
+    body: {
+      username: "Julie",
+      password: "password",
+    },
+  };
+
+  const res = {
+    status: jest.fn().mockReturnThis(),
+    json: jest.fn(),
+  };
+
+  describe("When invoked with a request object with the correct username and password", () => {
+    User.findOne = jest.fn().mockResolvedValue(true);
+    bcrypt.compare = jest.fn().mockResolvedValue(true);
+    jwt.sign = jest.fn().mockReturnValue(expectedToken);
+
+    test("Then it should call response status method status 201", async () => {
+      const expectedStatus = 200;
+
+      await userLogin(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(expectedStatus);
+    });
+  });
+
+  describe("When invoked with a req object with an incorrect username", () => {
+    test("Then it should call the next function", async () => {
+      const next = jest.fn();
+
+      User.findOne = jest.fn().mockResolvedValue(false);
+
+      await userLogin(req, res, next);
+
+      expect(next).toHaveBeenCalled();
+    });
+  });
+
+  describe("When invoked with a req object with a correct username and a wrong password", () => {
+    test("Then it should call the next function", async () => {
+      const next = jest.fn();
+
+      User.findOne = jest.fn().mockResolvedValue(true);
+      bcrypt.compare = jest.fn().mockResolvedValue(false);
+
+      await userLogin(req, res, next);
+
+      expect(next).toHaveBeenCalled();
     });
   });
 });
