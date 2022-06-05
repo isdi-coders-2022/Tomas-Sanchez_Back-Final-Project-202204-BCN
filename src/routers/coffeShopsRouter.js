@@ -1,8 +1,8 @@
 const express = require("express");
-const { getCoffeShops } = require("../server/controllers/coffeShopController");
+const getCoffeeShops = require("../server/controllers/coffeeShopController");
 
-const coffeShopsRouter = express.Router();
+const coffeeShopsRouter = express.Router();
 
-coffeShopsRouter.get("/list", getCoffeShops);
+coffeeShopsRouter.get("/list", getCoffeeShops);
 
-module.exports = coffeShopsRouter;
+module.exports = coffeeShopsRouter;
