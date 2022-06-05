@@ -1,6 +1,5 @@
 const { Schema, model } = require("mongoose");
 
-
 const CoffeShopSchema = new Schema({
   name: {
     type: String,
@@ -16,7 +15,7 @@ const CoffeShopSchema = new Schema({
     type: Number,
     max: 5,
     min: 0,
-  
+  },
 });
 
 const CoffeShop = model("CoffeShop", CoffeShopSchema, "CoffeShops");
