@@ -4,7 +4,7 @@ const chalk = require("chalk");
 const CoffeShop = require("../../database/models/CoffeShop");
 const customError = require("../../utils/customError");
 
-const getCoffeShops = async (req, res, next) => {
+const getCoffeeShops = async (req, res, next) => {
   debug(chalk.yellowBright("New CoffeShops list request received"));
 
   const coffeShops = await CoffeShop.find();
@@ -14,7 +14,7 @@ const getCoffeShops = async (req, res, next) => {
     next(error);
     return;
   }
-  res.status(200).json(coffeShops);
+  res.status(200).json({ coffeShops });
 };
 
-module.exports = { getCoffeShops };
+module.exports = getCoffeeShops;
