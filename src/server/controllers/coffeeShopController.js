@@ -12,9 +12,19 @@ const getCoffeeShops = async (req, res, next) => {
   if (coffeShops.length === 0) {
     const error = customError(404, "CoffeShops not found");
     next(error);
+
     return;
   }
   res.status(200).json({ coffeShops });
 };
 
-module.exports = getCoffeeShops;
+const deleteCoffeShop = async (req, res) => {
+  debug(chalk.green("Request to delete a CoffeeShop received"));
+
+  const { idCoffeeShop } = req.params;
+
+  await CoffeShop.findByIdAndDelete(idCoffeeShop);
+  res.status(200).json({ message: `The CoffeeShop has been deleted` });
+};
+
+module.exports = { getCoffeeShops, deleteCoffeShop };
