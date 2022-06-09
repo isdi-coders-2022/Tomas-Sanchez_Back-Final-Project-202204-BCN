@@ -74,19 +74,20 @@ describe("Given a POST createCoffeeShop controller", () => {
       json: jest.fn(),
     };
 
-    test("Then it should call the response json method a message", () => {
-      const expectedRespone = mockNewCoffeeShop;
-
-      createCoffeeShop(req, res);
-
-      expect(res.json).toHaveBeenCalledWith(expectedRespone);
-    });
     test("Then it should call the response status method with 201", async () => {
       const expectedStatus = 201;
 
       await createCoffeeShop(req, res);
 
       expect(res.status).toHaveBeenCalledWith(expectedStatus);
+    });
+
+    test("Then it should call the response json method a message", () => {
+      const expectedRespone = mockNewCoffeeShop;
+
+      createCoffeeShop(req, res);
+
+      expect(res.json).toHaveBeenCalledWith(expectedRespone);
     });
   });
 });
