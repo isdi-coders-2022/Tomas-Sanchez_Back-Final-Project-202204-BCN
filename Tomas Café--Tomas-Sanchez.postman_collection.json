@@ -1,80 +1,165 @@
 {
-  "info": {
-    "_postman_id": "f7af1da5-c7a6-452d-bf44-cc1d6903a435",
-    "name": "Tomas Café?-Tomas-Sanchez",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "20628223"
-  },
-  "item": [
-    {
-      "name": "Get CoffeeShops",
-      "protocolProfileBehavior": {
-        "disableBodyPruning": true
-      },
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"username\": \"pepewef69\",\n    \"password\": \"1234\",\n    \"name\": \"pefwefpe\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{origin}}coffeeshops/list",
-          "host": ["{{origin}}coffeeshops"],
-          "path": ["list"]
-        }
-      },
-      "response": []
-    },
-    {
-      "name": "User Register",
-      "request": {
-        "method": "POST",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n    \"username\": \"pepedqwdwwef69\",\n    \"password\": \"12dqwd34\",\n    \"name\": \"pefweqwdfpe\"\n}",
-          "options": {
-            "raw": {
-              "language": "json"
-            }
-          }
-        },
-        "url": {
-          "raw": "{{origin}}user/register",
-          "host": ["{{origin}}user"],
-          "path": ["register"]
-        }
-      },
-      "response": []
-    }
-  ],
-  "event": [
-    {
-      "listen": "prerequest",
-      "script": {
-        "type": "text/javascript",
-        "exec": [""]
-      }
-    },
-    {
-      "listen": "test",
-      "script": {
-        "type": "text/javascript",
-        "exec": [""]
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "origin",
-      "value": "http://localhost:4000/",
-      "type": "string"
-    }
-  ]
+	"info": {
+		"_postman_id": "f7af1da5-c7a6-452d-bf44-cc1d6903a435",
+		"name": "Tomas Café?-Tomas-Sanchez",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20628223"
+	},
+	"item": [
+		{
+			"name": "Get CoffeeShops",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"pepewef69\",\n    \"password\": \"1234\",\n    \"name\": \"pefwefpe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{origin}}coffeeshops/list",
+					"host": [
+						"{{origin}}coffeeshops"
+					],
+					"path": [
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create CoffeeShop",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/Users/tomassanchezmartinez/Desktop/Fotos cafeterias/OIP.jpeg"
+						},
+						{
+							"key": "name",
+							"value": "Morrow",
+							"type": "text"
+						},
+						{
+							"key": "adress",
+							"value": "Av. Gran via de les cortes catalane",
+							"type": "text"
+						},
+						{
+							"key": "rate",
+							"value": "4",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{origin}}coffeeshops/",
+					"host": [
+						"{{origin}}coffeeshops"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete CoffeeShop",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"pepewef69\",\n    \"password\": \"1234\",\n    \"name\": \"pefwefpe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{origin}}coffeeshops/",
+					"host": [
+						"{{origin}}coffeeshops"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"pepedqwdwwef69\",\n    \"password\": \"12dqwd34\",\n    \"name\": \"pefweqwdfpe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{origin}}user/register",
+					"host": [
+						"{{origin}}user"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "origin",
+			"value": "http://localhost:4000/",
+			"type": "string"
+		},
+		{
+			"key": "render",
+			"value": "https://tomas-sanchez-back-final-project-202204.onrender.com/",
+			"type": "string"
+		}
+	]
 }
