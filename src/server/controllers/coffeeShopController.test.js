@@ -6,6 +6,7 @@ const {
   deleteCoffeShop,
   getCoffeeShops,
   createCoffeeShop,
+  editCoffeeShop,
 } = require("./coffeeShopController");
 
 jest.mock("../../database/models/CoffeShop", () => ({
@@ -13,6 +14,7 @@ jest.mock("../../database/models/CoffeShop", () => ({
   find: jest.fn().mockResolvedValue(mockNewCoffeeShop),
   findByIdAndDelete: jest.fn().mockResolvedValue(mockNewCoffeeShops),
   create: jest.fn().mockResolvedValue(mockNewCoffeeShop),
+  findByIdAndUpdate: jest.fn().mockResolvedValue(mockNewCoffeeShops),
 }));
 
 describe("Given a GET properties controller", () => {
@@ -86,6 +88,36 @@ describe("Given a POST createCoffeeShop controller", () => {
       const expectedRespone = mockNewCoffeeShop;
 
       createCoffeeShop(req, res);
+
+      expect(res.json).toHaveBeenCalledWith(expectedRespone);
+    });
+  });
+});
+
+describe("Given a editProperty controller", () => {
+  describe("When invoked whit a response, a property and the property id as request param", () => {
+    const req = {
+      params: "7267c3c6b8f201e2a9ddhyhc4f3",
+      body: mockNewCoffeeShop,
+    };
+
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn(),
+    };
+
+    test("Then it should call the response status method with a 200", async () => {
+      const expectedStatus = 200;
+
+      await editCoffeeShop(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(expectedStatus);
+    });
+
+    test("Then it should call the response json method with a CoffeeShop", () => {
+      const expectedRespone = mockNewCoffeeShop;
+
+      editCoffeeShop(req, res);
 
       expect(res.json).toHaveBeenCalledWith(expectedRespone);
     });
