@@ -57,4 +57,17 @@ const createCoffeeShop = async (req, res, next) => {
   res.status(201).json(newCoffeeShop);
 };
 
-module.exports = { getCoffeeShops, deleteCoffeShop, createCoffeeShop };
+const editCoffeeShop = async (req, res) => {
+  debug(chalk.yellowBright("Request to edit a CoffeeShop received"));
+  const { idCoffeeShop } = req.params;
+  const coffeeShop = req.body;
+  await CoffeShop.findByIdAndUpdate({ _id: idCoffeeShop }, coffeeShop);
+  res.status(200).json(coffeeShop);
+};
+
+module.exports = {
+  getCoffeeShops,
+  deleteCoffeShop,
+  createCoffeeShop,
+  editCoffeeShop,
+};
