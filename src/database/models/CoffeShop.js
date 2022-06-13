@@ -13,7 +13,7 @@ const CoffeeShopSchema = new Schema({
   },
   rate: {
     type: Number,
-    max: 5,
+    max: 10,
     min: 0,
   },
 });

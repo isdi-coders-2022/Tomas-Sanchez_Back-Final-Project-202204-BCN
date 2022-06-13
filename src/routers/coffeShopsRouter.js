@@ -6,6 +6,7 @@ const {
   deleteCoffeShop,
   createCoffeeShop,
   editCoffeeShop,
+  getCoffeeShop,
 } = require("../server/controllers/coffeeShopController");
 
 const coffeeShopsRouter = express.Router();
@@ -17,10 +18,7 @@ const upload = multer({
 coffeeShopsRouter.get("/list", getCoffeeShops);
 coffeeShopsRouter.delete("/:idCoffeeShop", deleteCoffeShop);
 coffeeShopsRouter.post("/", upload.single("image"), createCoffeeShop);
-coffeeShopsRouter.put(
-  "/edit/:idCoffeeShop",
-  upload.single("image"),
-  editCoffeeShop
-);
+coffeeShopsRouter.put("/:idCoffeeShop", upload.single("image"), editCoffeeShop);
+coffeeShopsRouter.get("/:idProperty", getCoffeeShop);
 
 module.exports = coffeeShopsRouter;
