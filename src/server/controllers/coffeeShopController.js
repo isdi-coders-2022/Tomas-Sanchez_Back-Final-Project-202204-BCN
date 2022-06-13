@@ -68,8 +68,9 @@ const editCoffeeShop = async (req, res) => {
 const getCoffeeShop = async (req, res) => {
   const { idCoffeeShop } = req.params;
   const coffeeShop = await CoffeShop.findById(idCoffeeShop);
+
   debug(chalk.green("Request to get one property received"));
-  res.status(200).json(coffeeShop);
+  res.status(200).json({ coffeeShop });
 };
 
 module.exports = {

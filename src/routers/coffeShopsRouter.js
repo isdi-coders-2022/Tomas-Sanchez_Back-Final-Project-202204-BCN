@@ -19,6 +19,6 @@ coffeeShopsRouter.get("/list", getCoffeeShops);
 coffeeShopsRouter.delete("/:idCoffeeShop", deleteCoffeShop);
 coffeeShopsRouter.post("/", upload.single("image"), createCoffeeShop);
 coffeeShopsRouter.put("/:idCoffeeShop", upload.single("image"), editCoffeeShop);
-coffeeShopsRouter.get("/:idProperty", getCoffeeShop);
+coffeeShopsRouter.get("/:idCoffeeShop", getCoffeeShop);
 
 module.exports = coffeeShopsRouter;
